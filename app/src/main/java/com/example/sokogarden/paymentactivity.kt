@@ -27,16 +27,19 @@ class paymentactivity : AppCompatActivity() {
         val txtname = findViewById<TextView>(R.id.txtProductName)
         val txtcost = findViewById<TextView>(R.id.txtProductCost)
         val imgProduct = findViewById<ImageView>(R.id.imgProduct)
+        val ProductDescription = findViewById<TextView>(R.id.product_description)
 
 
 //        Retrieve the data first from the previous activity(mainactivity)
         val name = intent.getStringExtra("product_name")
         val cost = intent.getIntExtra("product_cost", 0)
         val product_photo = intent.getStringExtra("product_photo")
+        val description = intent.getStringExtra("product_description")
 
 //        Update the textview with the data passed from the previous activity
         txtname.text = name
         txtcost.text = "kes $cost"
+        ProductDescription.text = description
 
 //        Specify the image url
         val imageUrl = "https://josephdebug.alwaysdata.net/static/images/${product_photo}"
@@ -60,7 +63,17 @@ class paymentactivity : AppCompatActivity() {
             val data = RequestParams()
 
 //            Insert data into the request params
-            data.put("amount", cost)")
+            data.put("amount", cost)
+            data.put("phone", phone.text.toString().trim())
+
+//            Import the helper class
+            val helper = ApiHelper(applicationContext)
+
+//            Access the post function from the helper class
+            helper.post(api, data)
+
+//            Clear details after button click
+            phone.text.clear()
         }
 
 

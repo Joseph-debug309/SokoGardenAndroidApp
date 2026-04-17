@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
+        <item>@font/alkalami</item>
+        <item>@font/arbutus</item>
         <item>@font/instrument_serif</item>
         <item>@font/lemon</item>
+        <item>@font/montserrat_subrayada</item>
     </array>
 </resources>
