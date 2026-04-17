@@ -76,7 +76,7 @@
 
         <Button
             android:id="@+id/signupBtn"
-            android:layout_width="153dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="8dp"
@@ -89,13 +89,27 @@
 
         <Button
             android:id="@+id/signinBtn"
-            android:layout_width="156dp"
+            android:layout_width="103dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="8dp"
             android:backgroundTint="#051232"
             android:padding="10dp"
             android:text="Signin"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="#E1CDD8"
+            android:textSize="25sp" />
+
+
+        <Button
+            android:id="@+id/aboutBtn"
+            android:layout_width="107dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#051232"
+            android:padding="10dp"
+            android:text="About"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textColor="#E1CDD8"
             android:textSize="25sp" />
