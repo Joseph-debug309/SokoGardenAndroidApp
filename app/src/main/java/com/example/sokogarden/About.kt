@@ -2,6 +2,7 @@ package com.example.sokogarden
 
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
+import android.speech.tts.Voice
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -29,10 +30,24 @@ class About : AppCompatActivity() {
         val textView = findViewById<TextView>(R.id.aboutTxt)
         val speakButton = findViewById<Button>(R.id.btnListen)
 
-        tts = TextToSpeech(this) {
+        tts = TextToSpeech(this) { status ->
+            if (status == TextToSpeech.SUCCESS) {
+                // Try to find a male voice
+                val voices = tts.voices
+                if (voices != null) {
+                    val maleVoice = voices.find { voice ->
+                        voice.name.lowercase().contains("male") && 
+                        (voice.locale == Locale.UK || voice.locale == Locale.US)
+                    } ?: voices.find { it.name.lowercase().contains("male") }
 
-            if (it == TextToSpeech.SUCCESS) {
-                tts.language = Locale.UK
+                    if (maleVoice != null) {
+                        tts.voice = maleVoice
+                    } else {
+                        tts.language = Locale.UK
+                    }
+                } else {
+                    tts.language = Locale.UK
+                }
             }
         }
 //        End
